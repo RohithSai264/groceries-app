@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Schedule</title><!-- Link to your CSS file -->
+    <style>
+        /* General body styles */
+        body {
+            background-color: #D8E2DC; /* Background color */
+            font-family: 'Fantasy', sans-serif; /* Font style */
+            color: #000; /* Font color */
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Header styles */
+        h1, h2 {
+            text-align: center;
+            color: #000; /* Header color */
+        }
+
+        /* Table styles */
+        table {
+            width: 100%; /* Full width */
+            border-collapse: collapse; /* Collapse borders */
+            margin: 20px 0; /* Margin around table */
+            font-size: 18px; /* Font size */
+        }
+
+        th, td {
+            padding: 12px; /* Padding for cells */
+            text-align: left; /* Text alignment */
+            border: 2px solid black; /* Bold black border for cells */
+        }
+
+        tr:hover {
+            background-color: #F3F3F3; /* Change background on hover */
+            color: #000; /* Change text color on hover */
+        }
+
+        /* Style for table headers */
+        th {
+            background-color: #D5D1E9; /* Header background color */
+            color: #000; /* Header font color */
+        }
+
+        /* Update Request form styles */
+        form {
+            margin-top: 20px; /* Margin above form */
+            text-align: center; /* Centered text */
+        }
+
+        label {
+            margin: 0 10px; /* Margin around labels */
+        }
+
+        input[type="date"], select {
+            padding: 8px; /* Padding for inputs */
+            margin: 5px; /* Margin around inputs */
+            border: 1px solid #ddd; /* Border for inputs */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        button {
+            background-color: #FOF8E6; /* Button background color */
+            color: #00; /* Button font color */
+            padding: 10px 20px; /* Button padding */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        button:hover {
+            background-color: #F3F3F3; /* Button hover color */
+        }
+    </style>
+</head>
+<body>
+<h1>Grocery Schedule</h1>
+<h2>Current Schedule</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Group Name</th>
+        <th>Visit Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="group : ${grocerySchedule}">
+        <td th:text="${group.name}">Group Name</td>
+        <td th:text="${group.formattedDate}">Visit Date</td> <!-- Updated line -->
+    </tr>
+    </tbody>
+</table>
+
+<h2>Update Request</h2>
+<form action="/groceries/update" method="post">
+    <label for="group">Group Name:</label>
+    <select name="group" id="group" required>
+        <option value="" disabled selected>Select a group</option>
+        <option value="Basement Boys">Basement Boys</option>
+        <option value="Rohith Kancheti">Rohith Kancheti</option>
+        <option value="Kansas Boys">Kansas Boys</option>
+        <option value="Katepalli Group">Katepalli Group</option>
+    </select>
+
+    <label for="date">Visit Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <button type="submit">Request Update</button>
+</form>
+
+<div th:if="${errorMessage}">
+    <p th:text="${errorMessage}" style="color: red;"></p>
+</div>
+
+<h2>Update Requests</h2>
+<ul>
+    <li th:each="request : ${updateRequests}" th:text="${request}"></li>
+</ul>
+</body>
+</html>

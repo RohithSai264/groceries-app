@@ -1,0 +1,63 @@
+/* General body styles */
+body {
+    background-color: #4D4D4F; /* Background color */
+    font-family: 'Fantasy', sans-serif; /* Font style */
+    color: #000; /* Font color */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Header styles */
+h1, h2 {
+    text-align: center;
+    color: #FFF; /* Header color */
+}
+
+/* Table styles */
+table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Collapse borders */
+    margin: 20px 0; /* Margin around table */
+    font-size: 18px; /* Font size */
+}
+
+th, td {
+    padding: 12px; /* Padding for cells */
+    text-align: left; /* Text alignment */
+    border-bottom: 1px solid #ddd; /* Bottom border for rows */
+}
+
+tr:hover {
+    background-color: #575757; /* Change background on hover */
+    color: #FFF; /* Change text color on hover */
+}
+
+/* Style for table headers */
+th {
+    background-color: #333; /* Header background color */
+    color: #FFF; /* Header font color */
+}
+
+/* Update Request form styles */
+form {
+    margin-top: 20px; /* Margin above form */
+    text-align: center; /* Centered text */
+}
+
+label {
+    margin: 0 10px; /* Margin around labels */
+}
+
+input[type="date"], select {
+    padding: 8px; /* Padding for inputs */
+    margin: 5px; /* Margin around inputs */
+    border: 1px solid #ddd; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners */
+}
+
+button {
+    background-color: #555; /* Button background color */
+    color: #FFF; /* Button font color */
+    padding: 10px 20px; /* Button padding */
+    border: none; /* No border */
+    border-radius: 5px; /*
