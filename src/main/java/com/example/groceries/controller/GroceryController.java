@@ -21,14 +21,14 @@ public class GroceryController {
         this.groceryService = groceryService;
     }
 
-    @GetMapping("/groceries")
+    @GetMapping("/")
     public String showGroceriesPage(Model model) {
         List<GroceryGroup> grocerySchedule = groceryService.getGrocerySchedule();
         List<String> updateRequests = groceryService.getUpdateRequests();
 
         model.addAttribute("grocerySchedule", grocerySchedule);
         model.addAttribute("updateRequests", updateRequests);
-        return "groceries"; // Ensure this matches your HTML file name
+        return "index"; // Update to match the new file name
     }
 
     @PostMapping("/groceries/update")
@@ -54,7 +54,7 @@ public class GroceryController {
         model.addAttribute("grocerySchedule", groceryService.getGrocerySchedule());
         model.addAttribute("updateRequests", groceryService.getUpdateRequests());
 
-        // Return the same page with updated model
-        return "groceries"; // Ensure this matches your HTML template name
+        // Return the updated model and renamed template
+        return "index"; // Update to match the new file name
     }
 }
