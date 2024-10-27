@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Schedule</title>
+    <style>
+    </style>
+</head>
+<body>
+    <h1>Grocery Schedule</h1>
+    <h2>Current Schedule</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Group Name</th>
+            <th>Visit Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="group : ${grocerySchedule}">
+            <td th:text="${group.name}">Group Name</td>
+            <td th:text="${group.formattedDate}">Visit Date</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Update Request</h2>
+    <form action="/groceries/update" method="post">
+        <label for="group">Group Name:</label>
+        <select name="group" id="group" required>
+            <option value="" disabled selected>Select a group</option>
+            <option value="Basement Boys">Basement Boys</option>
+            <option value="Rohith Kancheti">Rohith Kancheti</option>
+            <option value="Kansas Boys">Kansas Boys</option>
+            <option value="Katepalli Group">Katepalli Group</option>
+        </select>
+
+        <label for="date">Visit Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <button type="submit">Request Update</button>
+    </form>
+
+    <div th:if="${errorMessage}">
+        <p th:text="${errorMessage}" style="color: red;"></p>
+    </div>
+
+    <h2>Update Requests</h2>
+    <ul>
+        <li th:each="request : ${updateRequests}" th:text="${request}"></li>
+    </ul>
+</body>
+</html>
 
