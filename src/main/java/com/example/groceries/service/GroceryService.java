@@ -31,6 +31,7 @@ public class GroceryService {
     public boolean addUpdateRequest(String request) {
         if (updateRequests.size() < 3) {
             updateRequests.add(request);
+            System.out.print("Reached the limit of today");
             return true;
         }
         return false;
